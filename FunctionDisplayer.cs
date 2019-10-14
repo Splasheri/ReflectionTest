@@ -25,26 +25,20 @@ namespace ReflectionTest
                     assembly = Assembly.LoadFile(Path.GetFullPath(file));
                     foreach (Type type in assembly.GetTypes())
                     {
-                        List<string> methods = new List<string>();
-                        foreach (MethodInfo method in type.GetMethods(BindingFlags.Public | BindingFlags.Instance | BindingFlags.DeclaredOnly))
+                        #region Output
+                        Console.WriteLine(type.Name);
+                        foreach (MethodInfo method in type.GetMethods(BindingFlags.Public | BindingFlags.Instance))
                         {
-                            methods.Add(method.Name);
+                            Console.WriteLine("\t" + method.Name);
                         }
-                        foreach (MethodInfo method in type.GetMethods(BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.DeclaredOnly))
+                        foreach (MethodInfo method in type.GetMethods(BindingFlags.NonPublic | BindingFlags.Instance))
                         {
                             if (!method.IsPrivate)
                             {
-                                methods.Add(method.Name);
+                                Console.WriteLine("\t" + method.Name);
                             }
                         }
-                        if (methods.Count > 0)
-                        {
-                            Console.WriteLine(type.Name);
-                            foreach (string methodName in methods)
-                            {
-                                Console.WriteLine("\t" + methodName);
-                            }
-                        }
+                        #endregion
                     }
                 }
             }

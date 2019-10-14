@@ -1,0 +1,11 @@
+C:\Users\splas\source\repos\ReflectionTest\ReflectionTest\bin\Debug\netcoreapp3.0\ReflectionTest.exe
+C:\Users\splas\source\repos\ReflectionTest\ReflectionTest\bin\Debug\netcoreapp3.0\ReflectionTest.deps.json
+C:\Users\splas\source\repos\ReflectionTest\ReflectionTest\bin\Debug\netcoreapp3.0\ReflectionTest.runtimeconfig.json
+C:\Users\splas\source\repos\ReflectionTest\ReflectionTest\bin\Debug\netcoreapp3.0\ReflectionTest.runtimeconfig.dev.json
+C:\Users\splas\source\repos\ReflectionTest\ReflectionTest\bin\Debug\netcoreapp3.0\ReflectionTest.dll
+C:\Users\splas\source\repos\ReflectionTest\ReflectionTest\bin\Debug\netcoreapp3.0\ReflectionTest.pdb
+C:\Users\splas\source\repos\ReflectionTest\ReflectionTest\obj\Debug\netcoreapp3.0\ReflectionTest.AssemblyInfoInputs.cache
+C:\Users\splas\source\repos\ReflectionTest\ReflectionTest\obj\Debug\netcoreapp3.0\ReflectionTest.AssemblyInfo.cs
+C:\Users\splas\source\repos\ReflectionTest\ReflectionTest\obj\Debug\netcoreapp3.0\ReflectionTest.dll
+C:\Users\splas\source\repos\ReflectionTest\ReflectionTest\obj\Debug\netcoreapp3.0\ReflectionTest.pdb
+C:\Users\splas\source\repos\ReflectionTest\ReflectionTest\obj\Debug\netcoreapp3.0\ReflectionTest.csprojAssemblyReference.cache

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 
@@ -14,10 +13,22 @@ namespace ReflectionTest
         {
             string path = args.Length == 1 ?
                 args[0] : InputArguments();
+            DisplayMethods(path);
+        }
+        private static string InputArguments()
+        {
+            Console.WriteLine("Write path to directory with dll's");
+            return Console.ReadLine();
+        }
+        public static void DisplayMethods(string path)
+        {
+            const string WRONG_PATH = "Wrong path";
+            const string NO_DLL = "There's no dll files";
+
             if (Directory.Exists(path))
             {
                 string[] dlls = Directory.GetFiles(path, "*.dll");
-                if (dlls.Length==0)
+                if (dlls.Length == 0)
                 {
                     Console.WriteLine(NO_DLL);
                 }
@@ -27,41 +38,26 @@ namespace ReflectionTest
                     assembly = Assembly.LoadFile(Path.GetFullPath(file));
                     foreach (Type type in assembly.GetTypes())
                     {
-                        PrintTypeMethods(type);
+                        #region Output
+                        Console.WriteLine(type.Name);
+                        foreach (MethodInfo method in type.GetMethods(BindingFlags.Public | BindingFlags.Instance))
+                        {
+                            Console.WriteLine("\t" + method.Name);
+                        }
+                        foreach (MethodInfo method in type.GetMethods(BindingFlags.NonPublic | BindingFlags.Instance))
+                        {
+                            if (!method.IsPrivate)
+                            {
+                                Console.WriteLine("\t" + method.Name);
+                            }
+                        }
+                        #endregion
                     }
                 }
             }
             else
             {
                 Console.WriteLine(WRONG_PATH);
-            }
-        }
-        private static string InputArguments()
-        {
-            Console.WriteLine("Write path to directory with dll's");
-            return Console.ReadLine();
-        }
-        private static void PrintTypeMethods(Type type)
-        {
-            List<string> methods = new List<string>();
-            foreach (MethodInfo method in type.GetMethods(BindingFlags.Public | BindingFlags.Instance | BindingFlags.DeclaredOnly))
-            {
-                methods.Add(method.Name);
-            }
-            foreach (MethodInfo method in type.GetMethods(BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.DeclaredOnly))
-            {
-                if (!method.IsPrivate)
-                {
-                    methods.Add(method.Name);
-                }
-            }
-            if (methods.Count>0)
-            {
-                Console.WriteLine(type.Name);
-                foreach (var methodName in methods)
-                {
-                    Console.WriteLine("\t" + methodName);
-                }
             }
         }
     }
